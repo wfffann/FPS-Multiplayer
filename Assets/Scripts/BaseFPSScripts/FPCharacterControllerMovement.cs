@@ -8,7 +8,7 @@ public class FPCharacterControllerMovement : MonoBehaviour
 {
     private CharacterController characterController;
     [SerializeField] private Animator characterAnimator;
-    [SerializeField] private Animator tp_CharacterAnimator;
+    [SerializeField] private Animator tp_CharacterAnimator;//第三人称控制器
     private Vector3 movementDirection;
     private Transform characterTransform;
     private float velocity;
@@ -76,6 +76,7 @@ public class FPCharacterControllerMovement : MonoBehaviour
                 isCrouched = !isCrouched;
             }
 
+            //移动动画
             if (characterAnimator != null)
             {
                 characterAnimator.SetFloat("Velocity",
