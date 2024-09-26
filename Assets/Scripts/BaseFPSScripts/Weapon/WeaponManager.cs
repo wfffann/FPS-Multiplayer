@@ -48,10 +48,10 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        photonView = GetComponent<PhotonView>();
+        //photonView = GetComponent<PhotonView>();
         Debug.Log($"Current weapon is null? {carriedWeapon == null}");
 
-        MainWeapon = photonView.IsMine ? WeaponInfos[0].FP_Weapon : WeaponInfos[0].TP_Weapon;
+        //MainWeapon = photonView.IsMine ? WeaponInfos[0].FP_Weapon : WeaponInfos[0].TP_Weapon;
 
 
         if (MainWeapon)
@@ -63,7 +63,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        //if (!photonView.IsMine) return;
         CheckItem();
 
         if (!carriedWeapon) return;
@@ -74,23 +74,23 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             //TODO:hold the Trigger
-            //carriedWeapon.HoldTrigger();
-            photonView.RPC("RPC_HoldTrigger", RpcTarget.All);
+            carriedWeapon.HoldTrigger();
+            //photonView.RPC("RPC_HoldTrigger", RpcTarget.All);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             //TODO: release the Trigger
-            //carriedWeapon.ReleaseTrigger();
-            photonView.RPC("RPC_ReleaseTrigger", RpcTarget.All);
+            carriedWeapon.ReleaseTrigger();
+            //photonView.RPC("RPC_ReleaseTrigger", RpcTarget.All);
         }
 
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             //TODO:Reloading the ammo
-            //carriedWeapon.ReloadAmmo();
-            photonView.RPC("RPC_ReloadAmmo", RpcTarget.All);
+            carriedWeapon.ReloadAmmo();
+            //photonView.RPC("RPC_ReloadAmmo", RpcTarget.All);
         }
 
         if (Input.GetMouseButtonDown(1))

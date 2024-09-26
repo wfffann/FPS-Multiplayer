@@ -23,7 +23,7 @@ namespace Scripts.Weapon
         public AudioSource FirearmsReloadAudioSource;
         public FirearmsAudioData FirearmsAudioData;
         public ImpactAudioData ImpactAudioData;
-        public GameObject BulletImpactPrefab;
+        //public GameObject BulletImpactPrefab;
 
         public float FireRate;
 

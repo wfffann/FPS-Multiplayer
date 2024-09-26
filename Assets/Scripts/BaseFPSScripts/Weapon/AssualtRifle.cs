@@ -76,6 +76,8 @@ namespace Scripts.Weapon
 //            tmp_BulletScript.ImpactPrefab = BulletImpactPrefab;
 //            tmp_BulletScript.ImpactAudioData = ImpactAudioData;
             tmp_BulletScript.BulletSpeed = 500;
+
+            Destroy(tmp_Bullet, 3);
         }
     }
 }

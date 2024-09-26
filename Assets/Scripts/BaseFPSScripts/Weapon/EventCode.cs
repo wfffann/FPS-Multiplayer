@@ -1,7 +1,4 @@
-namespace Scripts.Weapon
+public enum EventCode : byte
 {
-    public enum EventCode : byte
-    {
-        HitObject = 1,
-    }
+    HitObject = 1,
 }

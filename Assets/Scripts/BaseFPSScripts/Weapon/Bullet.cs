@@ -33,25 +33,26 @@ namespace Scripts.Weapon
                 out RaycastHit tmp_Hit,
                 (bulletTransform.position - prevPosition).magnitude)) return;
 
-            
+
             //if (tmp_Hit.collider.TryGetComponent(out IDamager tmp_Damager))
             //{
             //    tmp_Damager.TakeDamage(10);
             //}
 
-
+            //传输的信息字典
             Dictionary<byte, object> tmp_HitData = new Dictionary<byte, object>();
             tmp_HitData.Add(0, tmp_Hit.point);
             tmp_HitData.Add(1, tmp_Hit.normal);
             tmp_HitData.Add(2, tmp_Hit.collider.tag);
 
 
-            RaiseEventOptions tmp_RaiseEventOptions = new RaiseEventOptions() {Receivers = ReceiverGroup.All};
-            SendOptions tmp_SendOptions = SendOptions.SendReliable;
+            RaiseEventOptions tmp_RaiseEventOptions = new RaiseEventOptions() {Receivers = ReceiverGroup.All};//接收全部
+            SendOptions tmp_SendOptions = SendOptions.SendReliable;//可信的
+
+            //EventCode枚举Tag转发给客户端，客户端接收后按Tag进行解析，执行相应的效果
             PhotonNetwork.RaiseEvent((byte) EventCode.HitObject, tmp_HitData, tmp_RaiseEventOptions, tmp_SendOptions);
 
-
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 }
